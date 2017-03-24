@@ -69,7 +69,7 @@ ngModule.run(['$templateCache', function ($templateCache) {
     '\n' +
     '  <md-input-container class="md-block">\n' +
     '    <label for="workername">Phone number</label>\n' +
-    '    <input type="number" id="phonenumber" name="phonenumber" ng-model="ctrl.model.phone" pattern="([0-9]{7,15})" required>\n' +
+    '    <input type="text" id="phonenumber" name="phonenumber" ng-model="ctrl.model.phone" pattern="([0-9]{7,15})" required>\n' +
     '    <div ng-messages="workerForm.phonenumber.$error" ng-if="ctrl.submitted || workerForm.phonenumber.$dirty">\n' +
     '      <div ng-message="required">A phone number is required.</div>\n' +
     '      <div ng-message="pattern">A phone number can\'t be less than 7 or more than 15 digits.</div>\n' +
