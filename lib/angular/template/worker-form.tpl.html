@@ -60,7 +60,7 @@
 
   <md-input-container class="md-block">
     <label for="workername">Phone number</label>
-    <input type="text" id="phonenumber" name="phonenumber" ng-model="ctrl.model.phone" pattern="([0-9]{7,15})" required>
+    <input type="tel" id="phonenumber" name="phonenumber" ng-model="ctrl.model.phone" pattern="([0-9]{7,15})" required>
     <div ng-messages="workerForm.phonenumber.$error" ng-if="ctrl.submitted || workerForm.phonenumber.$dirty">
       <div ng-message="required">A phone number is required.</div>
       <div ng-message="pattern">A phone number can't be less than 7 or more than 15 digits.</div>
