@@ -1,5 +1,5 @@
 /**
- * Example migration to update user passwors to their hashed versions
+ * Example migration to update user passwords to their hashed versions
  */
 
 var hash = require('../lib/user/hash'); // require the hashing functions from inside this module.
@@ -11,12 +11,12 @@ exports.up = function(done) {
     return new Promise(function(resolve, reject) {
       hash.saltAndHash(user.password, function(err, hashed) {
         if (err) {
-          return reject(err);
+          return reject(new Error(err));
         }
         user.password = hashed;
         db.update(user, function(err, user) {
           if (err) {
-            return reject(err);
+            return reject(new Error(err));
           }
           return resolve(user);
         });
