@@ -15,7 +15,7 @@ In the MBaaS service that authenticates users (e.g. [raincatcher-demo-auth](http
 
 See the [Setup router for Cloud App](#setup-router-for-cloud-app) section for more details.
 
-Version 0.2.1 introduced encryption of the users profile data in localstorage (fh.wfm.profileData). The user will likely need to clear the app data/cache in their phones system settings for this feature to work, as previous plaintext profile data may be left on the phone causing an error when trying to decrypt it. To clear the app data on Android: 
+Version 0.2.1 introduced encryption of the users profile data in localstorage (fh.wfm.profileData). The user will likely need to clear the app data/cache in their phones system settings for this feature to work, as previous plaintext profile data may be left on the phone causing an error when trying to decrypt it. To clear the app data on Android:
 
 * Step 1: Head to the Settings menu. This can be done by tapping the cog icon in your notification shade.
 * Step 2: Find Apps (or Applications, depending on your device) in the menu, then locate the app that you want to clear the cache or data for.
@@ -140,7 +140,7 @@ const userRouter = require('fh-wfm-user/lib/router/mbaas');
 userRouter.init(
   mediator, // fh-wfm-mediator instance
   expressApp, // express application upon which to mount the router
-  ['password'], // list of fields from Users to exclude from the HTTP responses
+  ['password'], // userProfileExclusionList - the list of fields from a Users profile to exclude from the HTTP responses
 
   // Session storage configuration, new in 0.2.0
   {
@@ -169,7 +169,7 @@ userRouter.init(
   });
 ```
 
-Note: Setting the `authResponseExclusionList` array as `['password', 'banner']` will prevent these fields from appearing in the authentication response. By default, the `password` field is removed from the response. To allow all fields to be sent, set `authResponseExclusionList` to an empty array.
+Note: Setting the `userProfileExclusionList` array as `['password', 'banner']` will prevent these fields from appearing in the authentication response. By default, the `password` field is removed from the response. To allow all fields to be sent, set `userProfileExclusionList` to an empty array.
 
 For a more complete example check [the example initialization on raincatcher-demo-auth](https://github.com/feedhenry-raincatcher/raincatcher-demo-auth/blob/0e9d5edb200fdf84e39ce4dac08c48fadefded8a/application.js#L61).
 
