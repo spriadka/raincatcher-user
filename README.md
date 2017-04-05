@@ -35,51 +35,25 @@ You will also need to hash your users' passwords using the new hashing algorithm
 
 ## Client-side usage
 
-### Client-side usage (via broswerify)
+### Subscribed Topics
 
-#### Setup
-This module is packaged in a CommonJS format, exporting the name of the Angular namespace.  The module can be included in an angular.js as follows:
+#### Users
 
-```javascript
-angular.module('app', [
-, require('fh-wfm-user')
-...
-])
-```
 
-#### Integration
+| Topic                                 |  Parameters |
+| -------------                         |:-------------:  |
+| wfm:sync:users:create            |    ```{userToCreate: {<user fields>}}```         |
+| wfm:sync:users:update            |    ```{userToUpdate: {id: "IDOFUSERTOUPDATE", ...}}```        | 
+| wfm:sync:users:list              |    ```NONE```         |
+| wfm:sync:users:remove            |    ```{userToRemove: {id: "IDOFUSERTOREMOVE"}}```         |
+| wfm:sync:users:read              |    ```{id: "IDOFUSERTOREAD"}```         |
+| wfm:sync:users:read_profile              |    ```NONE```         |
+| wfm:sync:users:clear_session              |    ```NONE```         |
+| wfm:sync:users:verify_session              |    ```NONE```         |
+| wfm:sync:users:has_session              |    ```NONE```         |
+| wfm:sync:users:authenticate              |    ```{username: "user1234", password: "password1234"}```         |
 
-##### Angular Services
 
-This module provides 3 injectable CRUDL services :
-
-- `userClient` : to create, read, list, update and delete users.
-- `groupClient` : to create, read, list, update and delete groups.
-- `membershipClient` : to create, read, list, update and delete groups.
-
-the `userClient` has these extra functions : `auth`, `hasSession`, `clearSession`, `verify` and `getProfile`
-
-Example usage :
-```javascript
-resolve: {
-        worker: function($stateParams, userClient) {
-          return userClient.read($stateParams.workerId);
-        }
-```
-For a more complete example around CRUD operations, please check the [demo portal app](https://github.com/feedhenry-raincatcher/raincatcher-demo-portal/blob/master/src/app/worker/worker.js).
-
-For a more complete example around user authentication operations, please check the [this](https://github.com/feedhenry-raincatcher/raincatcher-demo-portal/blob/master/src/app/auth/auth.js).
-
-##### Directives
-
-| Name | Attributes |
-| ---- | ----------- |
-| worker-list | workers, selectedModel |
-| worker | worker, group |
-| worker-form | value, group |
-| group-list | groups, selectedModel |
-| group | group, members |
-| group-form | value |
 
 ## Usage in an express backend and mbaas service
 
@@ -99,7 +73,7 @@ var authServiceGuid = process.env.WFM_AUTH_GUID;
 ...
 
 // setup the wfm user router
-require('fh-wfm-user/lib/router/cloud')(mediator, app, authServiceGuid);
+require('fh-wfm-user/lib/cloud')(mediator, app, authServiceGuid);
 
 ```
 
