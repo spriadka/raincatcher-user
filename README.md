@@ -35,6 +35,23 @@ You will also need to hash your users' passwords using the new hashing algorithm
 
 ## Client-side usage
 
+### Config
+
+```
+var mediator = require('fh-wfm-mediator');
+
+var config = {
+    forceSessionVerificationOnResume: true
+};
+
+userCore(mediator, config);
+
+```
+
+#### forceSessionVerificationOnResume
+
+Flag for verifying a session when an app has resumed. This is useful for cases where the app was in the background for an extended period and a check needs to be made to verify that the current session is still valid.
+
 ### Subscribed Topics
 
 #### Users
