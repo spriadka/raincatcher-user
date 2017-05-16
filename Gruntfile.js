@@ -27,6 +27,7 @@ module.exports = function(grunt) {
         src: 'test/**/*-spec.js',
         options: {
           coverage: true,
+          reportFormats: ['lcovonly'],
           root: './lib'
         }
 
