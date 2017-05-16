@@ -54,6 +54,6 @@ module.exports = function(grunt) {
   grunt.registerTask('unit', ['env:test', 'eslint', 'mocha']);
   grunt.registerTask('coveralls',['env:test','mocha_istanbul:coveralls']);
   grunt.registerTask('coverage',['env:test','mocha_istanbul:coverage']);
-  grunt.registerTask('default', ['unit']);
+  grunt.registerTask('default', ['unit','coveralls']);
 
 };
